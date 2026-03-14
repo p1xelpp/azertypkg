@@ -183,9 +183,10 @@ case "$cmd" in
             exit 1
         fi
 
-        # copy user config to root
-        cp -r "$usercfg" "$HOME/.vpkg"
+        SRC="$(realpath ~/.vpkg)"
+		DST="$HOME/.vpkg"
 
+		cp -r "$SRC" $DST
 
         echo "configured .vpkg in superuser home folder"
         ;;
