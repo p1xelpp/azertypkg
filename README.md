@@ -4,8 +4,8 @@ vpkg is just an ordinary package manager, BUT because it depends like..... every
 
 *WARNING*: only available on posix systems (idk if i actually WANT to make a win port)
 
-**setup**
-
+                                                **setup**
+------------------------------------------------------------------------------------------------------------------------------------------
 this is the easy way to install vpkg
 
 1. make "cp2bin" executable
