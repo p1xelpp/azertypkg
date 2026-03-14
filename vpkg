@@ -94,10 +94,10 @@ case "$cmd" in
 	    exit 1
 	fi
 
-	# repos.json pad
+	# repos.json path
 	reposfile="$HOME/.vpkg/repos.json"
 
-	# tel hoeveel repos er al zijn
+	# count repos
 	count=$(jq '.repos | length' "$reposfile")
 	# nieuwe local index file
 	newlocal="$HOME/.vpkg/index$((count+1)).json"
@@ -175,7 +175,7 @@ case "$cmd" in
             exit 1
         fi
 
-        usercfg="/home/$SUDO_USER/.vpkg"
+        usercfg=".vpkg/"
 
         if [ ! -d "$usercfg" ]; then
             echo "error: $usercfg does not exist"
@@ -184,7 +184,7 @@ case "$cmd" in
         fi
 
         # copy user config to root
-        cp -r "/home/$SUDO_USER/.vpkg" "/root/.vpkg"
+        cp -r "$usercfg" "$HOME/.vpkg"
 
 
         echo "configured .vpkg in superuser home folder"
@@ -206,10 +206,10 @@ case "$cmd" in
         rm -f /usr/local/bin/* 2>/dev/null
 
         echo "Removing user config..."
-        rm -rf "/home/$SUDO_USER/.vpkg" 2>/dev/null
+        rm -rf "$usercfg" 2>/dev/null
 
         echo "Removing root config..."
-        rm -rf /root/.vpkg 2>/dev/null
+        rm -rf $HOME/.vpkg 2>/dev/null
 
         echo "Cleaning cache..."
         rm -f /tmp/*.vpkg 2>/dev/null
